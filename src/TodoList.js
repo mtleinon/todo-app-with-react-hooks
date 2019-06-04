@@ -12,7 +12,7 @@ export default function TodoList({
   return (
     <Paper>
       <List>
-        {todos.map(todo => (
+        {todos.map((todo, i) => (
           <React.Fragment key={todo.id}>
             <Todo
               todo={todo}
@@ -20,7 +20,7 @@ export default function TodoList({
               toggleTodo={toggleTodo}
               updateTodo={updateTodo}
             />
-            <Divider />
+            {i < todos.length - 1 && <Divider />}
           </React.Fragment>
         ))}
       </List>
