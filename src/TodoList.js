@@ -9,21 +9,24 @@ export default function TodoList({
   toggleTodo,
   updateTodo
 }) {
-  return (
-    <Paper>
-      <List>
-        {todos.map((todo, i) => (
-          <React.Fragment key={todo.id}>
-            <Todo
-              todo={todo}
-              removeTodo={removeTodo}
-              toggleTodo={toggleTodo}
-              updateTodo={updateTodo}
-            />
-            {i < todos.length - 1 && <Divider />}
-          </React.Fragment>
-        ))}
-      </List>
-    </Paper>
-  );
+  if (todos.length > 0) {
+    return (
+      <Paper>
+        <List>
+          {todos.map((todo, i) => (
+            <React.Fragment key={todo.id}>
+              <Todo
+                todo={todo}
+                removeTodo={removeTodo}
+                toggleTodo={toggleTodo}
+                updateTodo={updateTodo}
+              />
+              {i < todos.length - 1 && <Divider />}
+            </React.Fragment>
+          ))}
+        </List>
+      </Paper>
+    );
+  }
+  return null;
 }
