@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import useTodoState from './hooks/useTodoState';
+import useLocalStorageState from './hooks/useLocalStorageState';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import AppBar from '@material-ui/core/AppBar';
@@ -9,14 +10,11 @@ import TodoList from './TodoList';
 import TodoForm from './TodoForm';
 
 function TodoApp() {
-  const initialTodos = JSON.parse(window.localStorage.getItem('todos')) || [];
+  const initialTodos = [{ id: 1, task: 'a', completed: false }];
   const { todos, addTodo, removeTodo, toggleTodo, updateTodo } = useTodoState(
     initialTodos
   );
-  useEffect(() => {
-    window.localStorage.setItem('todos', JSON.stringify(todos));
-  }, [todos]);
-
+  const [mood, setMood] = useLocalStorageState('mood', 'happy');
   return (
     <Paper
       style={{
@@ -43,6 +41,11 @@ function TodoApp() {
           />
         </Grid>
       </Grid>
+      <button
+        onClick={() => (mood === 'happy' ? setMood('sad') : setMood('happy'))}
+      >
+        Update mood, now mood is {mood}
+      </button>
     </Paper>
   );
 }
