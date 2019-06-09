@@ -6,7 +6,7 @@ import Todo from './Todo';
 import { TodosContext } from './context/todos.context';
 
 export default function TodoList({ removeTodo, toggleTodo, updateTodo }) {
-  const { todos } = useContext(TodosContext);
+  const todos = useContext(TodosContext);
   if (todos.length > 0) {
     return (
       <Paper>

@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
 import useInputState from './hooks/useInputState';
 import TextField from '@material-ui/core/TextField';
-import { TodosContext } from './context/todos.context';
+import { DispatchContext } from './context/todos.context';
 
 export default function EditTodoForm({ todo, toggleEditing }) {
   const [value, changeValue, resetValue] = useInputState(todo.task);
-  const { dispatch } = useContext(TodosContext);
+  const dispatch = useContext(DispatchContext);
+  console.log('EDITTODO RENDER');
   return (
     <form
       onSubmit={e => {
