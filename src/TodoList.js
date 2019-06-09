@@ -13,12 +13,7 @@ export default function TodoList({ removeTodo, toggleTodo, updateTodo }) {
         <List>
           {todos.map((todo, i) => (
             <React.Fragment key={todo.id}>
-              <Todo
-                todo={todo}
-                // removeTodo={removeTodo}
-                // toggleTodo={toggleTodo}
-                // updateTodo={updateTodo}
-              />
+              <Todo todo={todo} />
               {i < todos.length - 1 && <Divider />}
             </React.Fragment>
           ))}

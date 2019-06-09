@@ -1,5 +1,4 @@
 import React from 'react';
-import useLocalStorageState from './hooks/useLocalStorageState';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import AppBar from '@material-ui/core/AppBar';
@@ -10,7 +9,6 @@ import TodoForm from './TodoForm';
 import { TodosProvider } from './context/todos.context';
 
 function TodoApp() {
-  const [mood, setMood] = useLocalStorageState('mood', 'happy');
   return (
     <Paper
       style={{
@@ -34,19 +32,8 @@ function TodoApp() {
           </TodosProvider>
         </Grid>
       </Grid>
-      <button
-        onClick={() => (mood === 'happy' ? setMood('sad') : setMood('happy'))}
-      >
-        Update mood, now mood is {mood}
-      </button>
     </Paper>
   );
 }
 
 export default TodoApp;
-
-// - TodoApp
-//   - TodoFrom
-//   - TodoList
-//     - TodoItem
-//       = id, task, completed
